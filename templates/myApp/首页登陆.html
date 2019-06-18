@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>请假系统首页</title>
+    <link rel = "stylesheet" type = "text/css" href = "{% static '试做一号机.css' %}">
+</head>
+<body>
+    {% csrf_token %}
+    <div id = "top_page_back">
+        <img src = "{% static 'backgroud_top.jpg' %}">
+    </div>
+
+    <div class = "center_article">
+        <h1 size="100">请假系统</h1>
+        <br><br>
+        <p>
+            针对学生请假的网上管理系统，通过该系统，任课老师可以在课堂上直接登录系统，查看哪些学生请假，并作出判断，再记录学生的考勤情况。
+        </p>
+        <br><br>
+        <div class = "link_login_button">
+            <button onclick="document.getElementById('login_win').style.display='block'" style="width:auto;">
+                登录
+            </button>
+        </div>
+    </div>
+    <div class = "modal" id = "login_win">
+<form class = "modal_content animate" method="post" action="">
+            {% csrf_token %}
+            {{ error }}
+
+            <img src="{% static 'ynu_logo.jpg' %}" id = "back_img">
+            <br>
+            <input type="radio" name="type" id="teacher" value="0"><label for="teacher">老师</label>
+            <input type="radio" name="type" id ="student" value="1"><label for="student">学生</label>
+            <div class = "container" >
+                <label><b>账号:</b></label>
+                <input type="text" placeholder="输入账号" name="user_name" required>
+
+                <label><b>密码:</b></label>
+                <input type="password" placeholder="输入密码" name="pwd" required>
+                <p id = "remember"><input type="checkbox" checked="checked">记住我</p>
+                  
+                <button type="submit" style = "width:50%">登陆</button>
+                <button class = "close_button" type="button" onclick="document.getElementById('login_win').style.display='none'" class="cancelbtn">
+                        取消
+                </button>
+            </div>
+       </form>
+    </div>
+
+
+</body>
+</html>

@@ -1,0 +1,105 @@
+body 
+{
+    list-style-type: none;
+    display: block;
+}
+
+a
+{
+    text-decoration: none;
+}
+
+ul
+{
+    list-style-type: none;
+}
+
+.stdmsg_center_article
+{
+    float: center;
+    text-align: center;
+    margin-top: 3.5%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 5%;
+    background-color: rgba(255, 255, 255, 1);
+    border: black 3px;
+    width: 90%;
+    box-shadow: rgb(83, 83, 83) 0px 3px 4px 0px;
+    height: auto;
+    overflow: hidden;
+}
+
+.logout
+{
+    float: right;
+    text-align:right;
+    margin-top: auto;
+}
+
+.jiatiao
+{
+    clear: both;
+    float: left;
+    text-align: left;
+    border:black 1px;
+    border-style: solid;
+    margin: 1% 1% 1% 1%;
+    width: 80%;
+    height: auto;
+}
+.jiatiao_stdname
+{
+    float: right;
+    font-size: 18px;
+}
+
+#v-pills-tab
+{
+    margin-top: 63px;
+}
+
+#background
+{
+    background-color: #007bff;
+    width: 100%;
+    height: 30%;
+    position: absolute;
+    z-index: -1;
+}
+
+#std_msg
+{
+    text-align: center;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 20px;
+}
+
+#center_form
+{
+    margin: 1% 1% 1% 1%;
+}
+
+#button_sub
+{
+    float: center;
+    width: 20%;
+}
+
+#std_card
+{
+    width: 70%;
+    height: 80%;
+}
+#std_card img
+{
+    margin:  auto auto auto auto;
+    width: 200px;
+    height: 200px;
+}
+
+#useless_text
+{
+    font-size: 12px;
+}

@@ -1,0 +1,66 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>个人中心</title>
+    <!--Bootstrape Css-->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel = "stylesheet" type = "text/css" href = "{% static '总样式.css' %}">
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-primary fixed-top navbar-expand-lg topnav">
+        <h1 class="navbar-brand">请假系统</h1>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto" style = "float: top;">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'myApp:stu_self_center' %}">个人中心<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'myApp:leave_history' %}">请假记录</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'myApp:stu_grade' %}">我的班级<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'myApp:leave' %}">请假</a>
+                </li>
+                </ul>
+        </div>
+        <a class="nav-link logout" href="{% url 'myApp:stu_self_center' %}"><p><font color ="white">{{ name }}</font></p></a>
+        <a class="nav-link logout" href="{% url 'myApp:user_logout' %}" title="退出"><p><font color = "white">退出登录</font></p></a>
+    </nav>
+    <div id = "background"></div>
+
+    <form action="" method="post">
+    <div class="card stdmsg_center_article"  id = "std_card">
+        <br>
+        <br><br><br>
+        <img class="card-img-top" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1560339550404&di=2ac9a973306a9f9a37c37d3e7f21ca3d&imgtype=0&src=http%3A%2F%2Fimg.qqzhi.com%2Fuploads%2F2019-02-28%2F093551547.jpg" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">个人信息</h5>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">账号：{{ user.username }}</li>
+            <li class="list-group-item">邮箱：{{ user.email }}</li>
+            <li class="list-group-item">姓名：{{ name }}</li>
+            {% if gender == True %}
+                <li class="list-group-item">性别：男</li>
+                {% elif gender == False %}
+                <li class="list-group-item">性别：女</li>
+            {% endif %}
+            <li class="list-group-item">学号：{{ user.username }}</li>
+        </ul>
+    </div>
+
+    <nav class="navbar fixed-bottom navbar-light navbar-dark bg-primary">
+        <a class="navbar-brand" href="#">感谢使用</a>
+    </nav>
+
+    <!--Bootstrape Js-->
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>请假管理</title>
+    <!--Bootstrape Css-->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel = "stylesheet" type = "text/css" href = "{% static '总样式.css' %}">
+    <script>
+        function alert_display() {
+            alert("批阅成功");
+        }
+    </script>
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-primary fixed-top navbar-expand-lg topnav">
+        <h1 class="navbar-brand">请假系统</h1>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'myApp:tea_self_center' %}">个人中心<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="{% url 'myApp:leave_manage' %}">请假管理</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'myApp:tea_grade' %}">我的班级</a>
+                </li>
+                </ul>
+        </div>
+        <a class="nav-link logout" href="{% url 'myApp:tea_self_center' %}"><p><font color ="white">{{ name }}</font></p></a>
+        <a class="nav-link logout" href="{% url 'myApp:user_logout' %}" title="退出"><p><font color = "white">退出登录</font></p></a>
+    </nav>
+    <div id = "background"><br><br><br><br><br><br><br><br><br><br><br><br></div>
+
+    <div class = "stdmsg_center_article">
+        <div>
+            <br>
+            <h2 id = "jiatiao_top">请假管理</h2>
+            <form action="" method="POST">
+            <ul>
+                {% csrf_token %}
+                        {% for i in comments %}
+                            {% if i.is_agree == None %}
+                                <li class = "jiatiao">
+                                <h3>{{ i.grade }}</h3>
+                                <p>&nbsp;&nbsp;&nbsp;&nbsp;{{ i.body }}</p>
+                                <p class = "jiatiao_stdname">------{{ i.stu }}</p>
+                                <p>{{ i.created }}</p>
+                                <br>
+                                <div id = "set_center">
+                                <input type="radio" name="is_agree" id ="同意" value="1"><label for="同意">同意</label>
+                                <input type="radio" name="is_agree" id="不同意" value="0"><label for="不同意">不同意</label>
+                                    <br>
+                                <input type="hidden" name="jiatiao" value="{{ i.body }}"><button type="submit" class="btn btn-outline-dark" id = "sub_button" onclick="alert_display()">确认</button>
+                                </div>
+                                <br>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+            </ul>
+            </form>
+        </div>
+    </div>
+
+    <nav class="navbar fixed-bottom navbar-light navbar-dark bg-primary">
+        <a class="navbar-brand" href="#jiatiao_top">感谢使用，点我返回顶部</a>
+    </nav>
+
+    <!--Bootstrape Js-->
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>

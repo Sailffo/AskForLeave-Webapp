@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>老师主页</title>
+</head>
+<body>
+    <center>
+    <font size="100">&lt;请&nbsp;假&nbsp;系&nbsp;统&gt;</font>
+    </center>
+    <div align="right">
+        <a href="{% url 'myApp:user_logout' %}" title="退出">退出登陆</a>
+        </div>
+    <ul>
+        <li><a href="{% url 'myApp:tea_self_center' %}">个人中心</a></li>
+        <li><a href="{% url 'myApp:tea_grade' %}">我的班级</a></li>
+        <li><a href="{% url 'myApp:leave_manage' %}">请假管理</a></li>
+        <li><a href="#">请假记录</a></li>
+        <li><a href="#">我的消息</a></li>
+    </ul>
+</body>
+</html>

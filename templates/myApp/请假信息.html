@@ -1,0 +1,71 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>请假</title>
+    <!--Bootstrape Css-->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel = "stylesheet" type = "text/css" href = "{% static '总样式.css' %}">
+    <script>
+        function alert_display() {
+            alert("提交成功");
+        }
+    </script>
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-primary fixed-top navbar-expand-lg topnav">
+        <h1 class="navbar-brand">请假系统</h1>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'myApp:stu_self_center' %}">个人中心</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'myApp:leave_history' %}">请假记录</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'myApp:stu_grade' %}">我的班级<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'myApp:leave' %}">请假<span class="sr-only">(current)</span></a>
+                </li>
+                </ul>
+        </div>
+        <a class="nav-link logout" href="{% url 'myApp:stu_self_center' %}"><p><font color ="white">{{ name }}</font></p></a>
+        <a class="nav-link logout" href="{% url 'myApp:user_logout' %}" title="退出"><p font = "color:white;"><font color = "white">退出登录</font></p></a>
+    </nav>
+    <div id = "background"><br><br><br><br></div>
+
+    <div class = "stdmsg_center_article">
+        <br>
+        <h2>填写假条</h2>
+        <form id = "center_form" action="#" method="POST">
+            {% csrf_token %}
+                <label for="" >请假班级：</label>
+                <select name="grade">
+                {% for grade in grades %}
+                    <option value="{{ grade.gname }}">
+                    <a href="#">{{ grade.gname }} &nbsp;&nbsp;&nbsp;{{ grade.gteacher }}</a>
+                    </option>
+                {% endfor %}
+                </select>
+                    <br>
+                    <textarea id="comment_text" name="text" cols="60" rows="20"></textarea>
+                    <br>
+                    <button type="Submit" class="btn btn-primary btn-lg" id = "button_sub" onclick="alert_display()">提交</button>
+            {{ error }}
+        </form>
+    </div>
+
+    <nav class="navbar fixed-bottom navbar-light navbar-dark bg-primary">
+        <a class="navbar-brand" href="">感谢使用，这里什么都没有哦</a>
+    </nav>
+
+    <!--Bootstrape Js-->
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>

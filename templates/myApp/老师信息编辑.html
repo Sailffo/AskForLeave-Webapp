@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>个人信息编辑</title>
+</head>
+<body>
+    <div align="right">
+        <a href="{% url 'myApp:tea_self_center' %}">返回个人中心</a>
+        <a href="{% url 'myApp:tea_home' %}">返回主页</a>
+        <a href="{% url 'myApp:user_logout' %}" title="退出">退出</a>
+    </div>
+    <center>
+        <font size="100">&lt请&nbsp;假&nbsp;系&nbsp;统&gt</font>
+        <br>
+        <br>
+        <br>
+        <br>
+    </center>
+        <h1>个人中心</h1>
+        <br>
+        <form action="#" method="post">
+            {% csrf_token %}
+            {{ edit_form.as_p }}
+            <br>
+            <div>
+                <input type="submit" name="" value="完成">
+            </div>
+            <br>
+        </form>
+</body>
+</html>
